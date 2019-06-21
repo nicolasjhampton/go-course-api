@@ -1,1 +1,1 @@
-web: ./bin/course-api
+web: bin/course-api
