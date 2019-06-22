@@ -7,9 +7,9 @@ import (
 
 var users = []m.User{
 	m.User{
-		ID:       3,
-		Name:     "Joe Smith",
-		Email:    "joe@smith.com",
+		ID:       1,
+		Name:     "Sam Smith",
+		Email:    "sam@smith.com",
 		Password: "password",
 	},
 	m.User{
@@ -19,9 +19,9 @@ var users = []m.User{
 		Password: "password",
 	},
 	m.User{
-		ID:       1,
-		Name:     "Sam Smith",
-		Email:    "sam@smith.com",
+		ID:       3,
+		Name:     "Joe Smith",
+		Email:    "joe@smith.com",
 		Password: "password",
 	},
 }

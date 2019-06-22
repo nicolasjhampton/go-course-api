@@ -11,13 +11,21 @@ import (
 
 func Setup() (DB *gorm.DB, err error) {
 	// connect
-	DB, err = gorm.Open("postgres", os.Getenv("DATABASE_URL"))
+	url, present := os.LookupEnv("DATABASE_URL")
+	if !present {
+		url = "postgresql://localhost/course-api?sslmode=disable"
+	}
+	DB, err = gorm.Open("postgres", url)
 	if err != nil {
 		return
 	}
 
 	// Create tables
-	DB.DropTable("Courses", "Steps", "Reviews", "Users")
+	DB.Exec("DROP TABLE courses;")
+	DB.Exec("DROP TABLE steps;")
+	DB.Exec("DROP TABLE reviews;")
+	DB.Exec("DROP TABLE users;")
+	// DB.DropTable("Courses", "Steps", "Reviews", "Users")
 	DB.AutoMigrate(&m.User{}, &m.Review{}, &m.Step{}, &m.Course{})
 	DB = DB.Set("gorm:auto_preload", true)
 

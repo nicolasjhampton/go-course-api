@@ -30,5 +30,9 @@ func main() {
 
 	_ = reviews.Routes(course, db)
 
-	router.Run(os.Getenv("PORT"))
+	port, present := os.LookupEnv("PORT")
+	if !present {
+		port = "3000"
+	}
+	router.Run(":" + port)
 }
